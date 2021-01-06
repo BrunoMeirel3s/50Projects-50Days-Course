@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*vh means viewport height that is the height of the screen, so it dependes on the resolution 
+    of the user's monitor, this way we can have a automatic adjustable site*/
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  /*background-size:cover - It's used to adjust de img in background, this way all the content will be show*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  /*the 'flex' property is used to change the flex element length, 
+  in our example here that we've 5 elements the max value will be 5,
+  when we put 5 the element will be show as 100% width*/
+  flex: 0.5;
+  margin: 10px;
+  /*we'reusing  relative position here 'cause the child element h3 will be absolute*/
+  position: relative;
+  transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5; /*100% width because we have 5 elements in total*/
+}
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+/*media query are used to apply css according to the case in parentesis*/
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  /*if the width be until 480px we're going to take the fourth and fifth element and 
+  change they display to none, this way they're not going to be showed*/
+  .panel:nth-last-of-type(4),
+  .panel:nth-last-of-type(5) {
+    display: none;
+  }
+}
