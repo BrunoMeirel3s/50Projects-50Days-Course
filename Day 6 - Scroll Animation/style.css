@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #efedd6;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /*Hide the scroll in x-axis*/
+  overflow-x: hidden;
+}
+
+h1 {
+  margin: 10px;
+}
+
+.box {
+  background-color: steelblue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  /*this x-translate here is responsible to hide the element*/
+  transform: translateX(400%);
+  /*the transition effet will be applied when the transform effect be changed*/
+  transition: transform 0.4s ease;
+}
+
+/*
+  :nth-of-type(even) will get all elements even elements with the class "box" this way the above css will apply
+  the right translate and the css bellow will apply the left translate
+*/
+.box:nth-of-type(even) {
+  transform: translateX(-400%);
+}
+
+/* the element that receives the "show" class will be translated to its original place*/
+.box.show {
+  transform: translateX(0);
+}
+
+.box h2 {
+  font-size: 45px;
+}
