@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eafbff;
+  /*
+    To create the half color page we're going to use a linear
+    gradient, using the "To Bottom" option we're able to create the
+    effect applying the white color until half of the page and 
+    the blue color from half to end
+  */
+  background-image: linear-gradient(
+    to bottom,
+    #eafbff 0%,
+    #eafbff 50%,
+    #5290f9 50%,
+    #5290f9 100%
+  );
+  font-family: "Muli", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+nav {
+  background-color: white;
+  padding: 20px;
+  /*
+    width will be 80px if the active class is not setted
+    this way the nav will be closed
+  */
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: width 0.6s linear;
+}
+
+/*
+  Whe the active class be setted the nav will be in its full width
+*/
+nav.active {
+  width: 350px;
+}
+
+/*
+  Important to noticed that when the active class is not present
+  the width will be 0, this way we won't be able do see it
+*/
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 0;
+  transition: width 0.6s linear;
+}
+/*
+  That the important tip, when the active class be available
+  the width of ul will be 100%
+*/
+nav.active ul {
+  width: 100%;
+}
+
+nav ul li {
+  transform: rotateY(0deg);
+  opacity: 0;
+  transition: transform 0.6s linear, opacity 0.3s linear;
+}
+/*
+  In the commands bellow we're changing the above css
+  the opacity will be 1 wich means that the content will be available
+  and the rotate will be 360deg the transition will be applied
+  when changing the above css for the bellow
+*/
+nav.active ul li {
+  opacity: 1;
+  transform: rotateY(360deg);
+}
+
+nav ul a {
+  position: relative;
+  color: black;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.icon {
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  height: 30px;
+  width: 30px;
+}
+
+.icon:focus {
+  outline: 0;
+}
+
+/*
+  The CSS bellow will be applied to all lines
+  the transition effect will be responsible apply a smooth 
+  movement when making the rotation
+*/
+.icon .line {
+  background-color: #5290f9;
+  height: 2px;
+  width: 20px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  transition: transform 0.6s linear;
+}
+
+.icon .line2 {
+  top: auto;
+  bottom: 10px;
+}
+
+nav.active .icon {
+  top: -4px;
+}
+nav.active .icon .line1 {
+  margin-top: 8px;
+  transform: rotate(-765deg) translateY(5.5px);
+}
+
+nav.active .icon .line2 {
+  margin-left: 7px;
+  transform: rotate(765deg) translateY(5.5px);
+}
